@@ -3,142 +3,171 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Culture &amp; Environment Explorer</title>
-<meta name="description" content="Explore the 8 Culture & Environment indicators from the BETTER in STEM framework — Designing for Equity FEW at Whatcom Community College.">
+<title>Equity Framework Explorer</title>
+<meta name="description" content="Explore the BETTER in STEM equitable, student-centered instructional framework — Designing for Equity FEW at Whatcom Community College.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Fraunces:opsz,wght@9..144,500;9..144,700&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg: #fbf8f3;
-    --surface: #ffffff;
-    --ink: #22201c;
-    --muted: #5f5a52;
-    --line: #e6dfd3;
-    --teal: #0f6e64;
-    --teal-soft: #dff1ec;
-    --plum: #7a2e5c;
-    --plum-soft: #f6e3ee;
-    --sun: #e9a23b;
-    --focus: #1d4ed8;
+    --bg: #fbf8f3; --surface: #ffffff; --ink: #22201c; --muted: #5f5a52; --line: #e6dfd3;
+    --sun: #e9a23b; --focus: #1d4ed8;
+    --c1: #0f6e64; --c1-soft: #dff1ec;   /* Culture & Environment */
+    --c2: #2f5a9e; --c2-soft: #e2eaf7;   /* Curriculum & Content */
+    --c3: #7a2e5c; --c3-soft: #f6e3ee;   /* Discourse & Language */
+    --c4: #8a5a12; --c4-soft: #f7ead3;   /* Assessment for Learning */
     --shadow: 0 1px 2px rgba(34,32,28,.06), 0 6px 20px rgba(34,32,28,.06);
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
       --bg: #17161a; --surface: #211f24; --ink: #f1ede6; --muted: #b5aea3; --line: #36333a;
-      --teal: #5fc4b5; --teal-soft: #1d3633; --plum: #e48dbd; --plum-soft: #3a2232; --sun: #f0b45a;
-      --focus: #93b4ff; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 6px 20px rgba(0,0,0,.3);
+      --sun: #f0b45a; --focus: #93b4ff;
+      --c1: #5fc4b5; --c1-soft: #1d3633; --c2: #8fb2ee; --c2-soft: #1f2a3d;
+      --c3: #e48dbd; --c3-soft: #3a2232; --c4: #e6b46a; --c4-soft: #3a2e1c;
+      --shadow: 0 1px 2px rgba(0,0,0,.3), 0 6px 20px rgba(0,0,0,.3);
     }
   }
   :root[data-theme="dark"] {
     --bg: #17161a; --surface: #211f24; --ink: #f1ede6; --muted: #b5aea3; --line: #36333a;
-    --teal: #5fc4b5; --teal-soft: #1d3633; --plum: #e48dbd; --plum-soft: #3a2232; --sun: #f0b45a;
-    --focus: #93b4ff; --shadow: 0 1px 2px rgba(0,0,0,.3), 0 6px 20px rgba(0,0,0,.3);
+    --sun: #f0b45a; --focus: #93b4ff;
+    --c1: #5fc4b5; --c1-soft: #1d3633; --c2: #8fb2ee; --c2-soft: #1f2a3d;
+    --c3: #e48dbd; --c3-soft: #3a2232; --c4: #e6b46a; --c4-soft: #3a2e1c;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 6px 20px rgba(0,0,0,.3);
   }
   * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
   body {
     margin: 0; background: var(--bg); color: var(--ink);
     font-family: "Atkinson Hyperlegible", system-ui, sans-serif; font-size: 17px; line-height: 1.6;
   }
-  a { color: var(--teal); }
+  a { color: var(--accent, var(--c1)); }
   :focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-radius: 6px; }
   .wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
   h1, h2, h3 { font-family: "Fraunces", Georgia, serif; line-height: 1.2; margin: 0; }
+  [hidden] { display: none !important; }
 
-  header { padding: 48px 0 24px; }
+  .t1 { --accent: var(--c1); --accent-soft: var(--c1-soft); }
+  .t2 { --accent: var(--c2); --accent-soft: var(--c2-soft); }
+  .t3 { --accent: var(--c3); --accent-soft: var(--c3-soft); }
+  .t4 { --accent: var(--c4); --accent-soft: var(--c4-soft); }
+
+  header { padding: 40px 0 8px; }
   .eyebrow { font-size: 14px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
-  header h1 { font-size: clamp(32px, 6vw, 52px); margin: 8px 0 12px; }
-  header h1 span { color: var(--teal); }
-  .lede { font-size: 19px; color: var(--muted); max-width: 680px; margin: 0; }
+  h1 { font-size: clamp(32px, 6vw, 52px); margin: 8px 0 12px; }
+  h1 span { color: var(--accent, var(--c1)); }
+  .lede { font-size: 19px; color: var(--muted); max-width: 700px; margin: 0; }
+  .back {
+    display: inline-flex; align-items: center; gap: 6px; font: inherit; font-size: 15px; font-weight: 700;
+    color: var(--muted); background: none; border: none; padding: 4px 0; cursor: pointer; text-decoration: none;
+  }
+  .back:hover { color: var(--ink); }
 
+  /* Home: component cards */
+  .comps { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 460px), 1fr)); gap: 16px; margin: 32px 0 8px; }
+  .comp {
+    text-align: left; font: inherit; color: inherit; cursor: pointer; position: relative;
+    background: var(--surface); border: 1px solid var(--line); border-top: 6px solid var(--accent);
+    border-radius: 16px; padding: 22px 22px 20px; box-shadow: var(--shadow);
+    display: flex; flex-direction: column; gap: 8px; transition: transform .15s ease, border-color .15s ease;
+  }
+  .comp:hover { transform: translateY(-2px); }
+  .comp h2 { font-size: 26px; color: var(--accent); }
+  .comp .q { font-style: italic; color: var(--ink); margin: 0; }
+  .comp .d { color: var(--muted); margin: 0; font-size: 16px; }
+  .comp .meta { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .pill { font-size: 13px; font-weight: 700; padding: 4px 10px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); }
+  .pill.focus { background: var(--sun); color: #2a1d05; }
+  .comp .go { margin-top: auto; padding-top: 8px; font-weight: 700; color: var(--accent); font-size: 15px; }
+  .how { margin: 28px 0; padding: 20px 22px; border: 1px dashed var(--line); border-radius: 14px; color: var(--muted); }
+  .how h2 { font-size: 20px; color: var(--ink); margin-bottom: 6px; }
+  .how p { margin: 0; }
+
+  /* Component view */
   .vision {
-    margin: 28px 0 8px; padding: 22px 24px; background: var(--surface); border: 1px solid var(--line);
-    border-left: 6px solid var(--sun); border-radius: 14px; box-shadow: var(--shadow);
+    margin: 24px 0 8px; padding: 22px 24px; background: var(--surface); border: 1px solid var(--line);
+    border-left: 6px solid var(--accent); border-radius: 14px; box-shadow: var(--shadow);
   }
   .vision h2 { font-size: 22px; margin-bottom: 8px; }
   .vision p { margin: 0 0 8px; }
   .vision p:last-child { margin: 0; }
-
-  .controls { margin: 32px 0 16px; }
+  .controls { margin: 28px 0 8px; }
   .controls h2 { font-size: 22px; margin-bottom: 4px; }
   .controls p { margin: 0 0 12px; color: var(--muted); }
   .chips { display: flex; flex-wrap: wrap; gap: 8px; }
   .chip {
     font: inherit; font-size: 15px; padding: 8px 14px; border-radius: 999px; cursor: pointer;
-    border: 1.5px solid var(--line); background: var(--surface); color: var(--ink);
+    border: 1.5px solid var(--line); background: var(--surface); color: var(--ink); text-align: left;
   }
   .chip:hover { border-color: var(--muted); }
-  .chip[aria-pressed="true"] { background: var(--ink); color: var(--bg); border-color: var(--ink); }
-
+  .chip[aria-pressed="true"] { background: var(--accent); color: var(--surface); border-color: var(--accent); }
   .group-title { display: flex; align-items: baseline; gap: 12px; margin: 28px 0 12px; flex-wrap: wrap; }
   .group-title h2 { font-size: 24px; }
   .group-title .tag { font-size: 14px; color: var(--muted); }
-  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr)); gap: 14px; }
   .card {
     text-align: left; font: inherit; color: inherit; cursor: pointer; position: relative;
     background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px 18px 16px;
     box-shadow: var(--shadow); transition: transform .15s ease, opacity .2s ease, border-color .15s ease;
-    display: flex; flex-direction: column; gap: 6px; min-height: 170px;
+    display: flex; flex-direction: column; gap: 6px; min-height: 160px;
   }
   .card:hover { transform: translateY(-2px); border-color: var(--muted); }
   .card .num {
     width: 36px; height: 36px; border-radius: 50%; display: grid; place-items: center;
-    font-family: "Fraunces", serif; font-weight: 700; font-size: 18px;
+    font-family: "Fraunces", serif; font-weight: 700; font-size: 18px; background: var(--accent-soft); color: var(--accent);
   }
-  .card.g1 .num { background: var(--teal-soft); color: var(--teal); }
-  .card.g2 .num { background: var(--plum-soft); color: var(--plum); }
   .card h3 { font-size: 20px; }
   .card p { margin: 0; color: var(--muted); font-size: 15.5px; }
-  .card .noted { position: absolute; top: 16px; right: 16px; font-size: 13px; color: var(--teal); font-weight: 700; }
+  .card .noted { position: absolute; top: 16px; right: 16px; font-size: 13px; color: var(--accent); font-weight: 700; }
   .card.dim { opacity: .35; }
+  .others { margin: 36px 0 40px; }
+  .others h2 { font-size: 20px; margin-bottom: 10px; }
+  .others .row { display: flex; gap: 10px; flex-wrap: wrap; }
+  .others a {
+    text-decoration: none; font-weight: 700; font-size: 15px; padding: 8px 14px; border-radius: 10px;
+    background: var(--accent-soft); color: var(--accent);
+  }
 
   .notes-bar {
-    margin: 36px 0; padding: 20px 24px; border-radius: 14px; background: var(--teal-soft);
+    margin: 36px 0; padding: 20px 24px; border-radius: 14px; background: var(--accent-soft, var(--c1-soft));
     display: flex; gap: 16px; align-items: center; justify-content: space-between; flex-wrap: wrap;
   }
   .notes-bar p { margin: 0; max-width: 620px; }
   .btn {
     font: inherit; font-weight: 700; font-size: 15px; padding: 10px 18px; border-radius: 10px; cursor: pointer;
-    border: none; background: var(--teal); color: #fff;
+    border: none; background: var(--accent, var(--c1)); color: var(--surface);
   }
-  :root[data-theme="dark"] .btn { color: #0e1a18; }
-  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .btn { color: #0e1a18; } }
   .btn.ghost { background: transparent; color: var(--ink); border: 1.5px solid var(--line); }
 
-  footer { border-top: 1px solid var(--line); padding: 24px 0 48px; color: var(--muted); font-size: 14px; }
+  footer { border-top: 1px solid var(--line); padding: 24px 0 48px; color: var(--muted); font-size: 14px; margin-top: 24px; }
   footer p { margin: 0 0 8px; }
 
-  /* Dialog */
+  /* Dialogs */
   dialog {
     width: min(760px, calc(100vw - 24px)); max-height: calc(100vh - 32px); padding: 0; border: none;
     border-radius: 18px; background: var(--surface); color: var(--ink); box-shadow: 0 20px 60px rgba(0,0,0,.3);
   }
   dialog::backdrop { background: rgba(20,18,16,.55); }
-  .d-head { padding: 24px 24px 16px; border-bottom: 1px solid var(--line); position: sticky; top: 0; background: var(--surface); z-index: 1; }
+  .d-head { padding: 22px 24px 0; border-bottom: 1px solid var(--line); position: sticky; top: 0; background: var(--surface); z-index: 1; }
   .d-head .row { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; }
   .d-head h2 { font-size: 28px; margin: 4px 0 6px; }
-  .d-group { font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; }
-  .d-group.g1 { color: var(--teal); } .d-group.g2 { color: var(--plum); }
-  .close { font: inherit; font-size: 24px; line-height: 1; background: none; border: none; cursor: pointer; color: var(--muted); padding: 4px 8px; }
+  .d-group { font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--accent); }
+  .close { font: inherit; font-size: 26px; line-height: 1; background: none; border: none; cursor: pointer; color: var(--muted); padding: 4px 8px; }
   .plain { margin: 0; font-size: 18px; }
-  .tabs { display: flex; gap: 4px; margin-top: 14px; overflow-x: auto; }
+  .tabs { display: flex; gap: 4px; margin-top: 12px; overflow-x: auto; }
   .tab {
     font: inherit; font-size: 15px; font-weight: 700; padding: 8px 12px; border: none; background: none; cursor: pointer;
     color: var(--muted); border-bottom: 3px solid transparent; white-space: nowrap;
   }
-  .tab[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--sun); }
+  .tab[aria-selected="true"] { color: var(--ink); border-bottom-color: var(--accent); }
   .d-body { padding: 20px 24px 24px; }
   .d-body h3 { font-size: 18px; margin: 18px 0 8px; }
   .d-body h3:first-child { margin-top: 0; }
   .d-body ul { padding-left: 20px; margin: 0; }
   .d-body li { margin-bottom: 6px; }
   .quote { margin: 0 0 16px; padding: 12px 16px; border-radius: 10px; background: var(--bg); font-style: italic; color: var(--muted); }
-  .field { display: grid; grid-template-columns: 150px 1fr; gap: 4px 16px; padding: 12px 0; border-top: 1px solid var(--line); }
-  .field:first-child { border-top: none; padding-top: 0; }
-  .field strong { color: var(--ink); }
+  .field { display: grid; grid-template-columns: 170px 1fr; gap: 4px 16px; padding: 12px 0; border-top: 1px solid var(--line); }
+  .field:first-of-type { border-top: none; }
   @media (max-width: 560px) { .field { grid-template-columns: 1fr; } }
-  .scenario { padding: 12px 16px; border-radius: 10px; background: var(--plum-soft); margin-bottom: 10px; }
+  .scenario { padding: 12px 16px; border-radius: 10px; background: var(--accent-soft); margin-bottom: 10px; }
   .scenario p { margin: 0 0 4px; }
   label.note { display: block; font-weight: 700; margin: 14px 0 6px; }
   label.note span { font-weight: 400; color: var(--muted); }
@@ -146,9 +175,10 @@
     width: 100%; min-height: 80px; font: inherit; font-size: 16px; padding: 10px 12px; border-radius: 10px;
     border: 1.5px solid var(--line); background: var(--bg); color: var(--ink); resize: vertical;
   }
-  .d-foot { display: flex; justify-content: space-between; gap: 8px; padding: 16px 24px; border-top: 1px solid var(--line); flex-wrap: wrap; }
+  .d-foot { display: flex; justify-content: space-between; align-items: center; gap: 8px; padding: 14px 24px; border-top: 1px solid var(--line); flex-wrap: wrap; }
   .hint { font-size: 14px; color: var(--muted); margin: 10px 0 0; }
-  #summaryBody h3 { margin-top: 20px; }
+  #summaryBody h3 { margin-top: 18px; }
+  #summaryBody h4 { margin: 12px 0 4px; font-size: 16px; }
   #summaryBody p { margin: 4px 0; }
   .empty { color: var(--muted); }
 
@@ -158,44 +188,63 @@
     #summary { position: absolute; inset: 0; box-shadow: none; max-height: none; width: 100%; }
     .d-foot, .close { display: none !important; }
   }
-  @media (prefers-reduced-motion: reduce) { * { transition: none !important; scroll-behavior: auto !important; } }
+  @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 </style>
 </head>
 <body>
 
-<header class="wrap">
-  <div class="eyebrow">Designing for Equity FEW · Whatcom Community College</div>
-  <h1>Culture &amp; <span>Environment</span> Explorer</h1>
-  <p class="lede">How do students experience the learning environment we create? Explore the eight indicators, see what they look like across disciplines, and jot your own reflections as you go.</p>
+<!-- HOME -->
+<div id="home">
+  <header class="wrap">
+    <div class="eyebrow">Designing for Equity FEW · Whatcom Community College</div>
+    <h1>Equity Framework <span>Explorer</span></h1>
+    <p class="lede">A shared framework for equitable, student-centered teaching, built from the BETTER in STEM project and now used across disciplines. It has four components. Choose one to explore its indicators, see what they look like in different fields, and jot your own reflections.</p>
+  </header>
+  <main class="wrap">
+    <div class="comps" id="comps"></div>
+    <section class="how">
+      <h2>How to use this site</h2>
+      <p>Each component has a vision and a set of indicators. Open any indicator to see why it matters, small changes to try, examples from across disciplines, and reflection questions. Use the "My notes" tab to capture your thinking. Your notes stay private in this browser, and you can copy them into Canvas anytime.</p>
+    </section>
+    <section class="notes-bar">
+      <p><strong>Your notes stay in this browser.</strong> View everything you've written across all four components, then copy it into Canvas or print it.</p>
+      <button class="btn" data-summary>View my notes</button>
+    </section>
+  </main>
+</div>
 
-  <section class="vision" aria-labelledby="visionTitle">
-    <h2 id="visionTitle">The vision</h2>
-    <p>Culture &amp; Environment is about helping every student feel they belong, in our classrooms and in our fields, and making sure they know what it takes to succeed.</p>
-    <p>Belonging grows when students believe the ideas, experiences, and resources they bring are recognized and put to use, and when they have a voice and agency in their own learning. It also means students see people of many backgrounds contributing to their field, understand how the dominant culture has shaped what their field values, and explore multiple cultural ways of knowing.</p>
-  </section>
-</header>
-
-<main class="wrap">
-  <section class="controls" aria-labelledby="startTitle">
-    <h2 id="startTitle">Not sure where to start?</h2>
-    <p>Pick the question that resonates most, and the indicators that connect to it will stand out.</p>
-    <div class="chips" id="chips" role="group" aria-label="Guiding questions"></div>
-  </section>
-
-  <div class="group-title"><h2>Transparency, Accessibility &amp; Engagement</h2><span class="tag">Indicators 1–5 · the conditions for learning</span></div>
-  <div class="grid" id="grid1"></div>
-
-  <div class="group-title"><h2>Power &amp; Cultural Competence</h2><span class="tag">Indicators 6–8 · assumptions, bias, and working across difference</span></div>
-  <div class="grid" id="grid2"></div>
-
-  <section class="notes-bar" aria-label="Your reflection notes">
-    <p><strong>Your notes stay in this browser.</strong> As you explore, use the "My notes" tab on each indicator. When you're ready, view all your notes together to copy into Canvas or print.</p>
-    <button class="btn" id="openSummary">View my notes</button>
-  </section>
-</main>
+<!-- COMPONENT VIEW -->
+<div id="compView" hidden>
+  <header class="wrap">
+    <a class="back" href="#">← All four components</a>
+    <div class="eyebrow" id="cEyebrow" style="margin-top:12px"></div>
+    <h1 id="cTitle"></h1>
+    <p class="lede" id="cQuestion"></p>
+    <section class="vision" aria-labelledby="visionTitle">
+      <h2 id="visionTitle">The vision</h2>
+      <div id="cVision"></div>
+    </section>
+  </header>
+  <main class="wrap">
+    <section class="controls" aria-labelledby="startTitle">
+      <h2 id="startTitle">Not sure where to start?</h2>
+      <p>Pick the question that resonates most, and the indicators that connect to it will stand out.</p>
+      <div class="chips" id="chips" role="group" aria-label="Guiding questions"></div>
+    </section>
+    <div id="groups"></div>
+    <section class="notes-bar">
+      <p><strong>Your notes stay in this browser.</strong> Use the "My notes" tab on any indicator, then view them all together to copy into Canvas or print.</p>
+      <button class="btn" data-summary>View my notes</button>
+    </section>
+    <section class="others">
+      <h2>Explore another component</h2>
+      <div class="row" id="others"></div>
+    </section>
+  </main>
+</div>
 
 <footer class="wrap">
-  <p>The indicators and vision are adapted from the <a href="https://sites.google.com/view/betterstem/instructional-framework-resources/culture-and-environment">BETTER in STEM Culture &amp; Environment framework</a>, a collaboration of Whatcom Community College, Western Washington University, and the University of Texas Rio Grande Valley.</p>
+  <p>Indicators and visions are adapted from the <a href="https://sites.google.com/view/betterstem/instructional-framework-resources">BETTER in STEM Equitable, Student-Centered Instructional Framework</a>, a collaboration of Whatcom Community College, Western Washington University, and the University of Texas Rio Grande Valley.</p>
   <p>BETTER in STEM is supported by the National Science Foundation under grant numbers DUE-2111613, 2111610, and 2111417. Any opinions, findings, and conclusions or recommendations expressed in this material are those of the authors and do not necessarily reflect the views of the National Science Foundation.</p>
 </footer>
 
@@ -226,9 +275,9 @@
 </dialog>
 
 <dialog id="summary" aria-labelledby="sTitle">
-  <div class="d-head">
+  <div class="d-head" style="padding-bottom:16px">
     <div class="row">
-      <h2 id="sTitle">My Culture &amp; Environment notes</h2>
+      <h2 id="sTitle">My framework notes</h2>
       <button class="close" data-close aria-label="Close">×</button>
     </div>
   </div>
@@ -243,227 +292,897 @@
 </dialog>
 
 <script>
-const BIS = "https://sites.google.com/view/betterstem/instructional-framework-resources/culture-and-environment/";
+const BIS = "https://sites.google.com/view/betterstem/instructional-framework-resources/";
 
-const INDICATORS = [
+const COMPONENTS = [
+  /* ===================== 1. CULTURE & ENVIRONMENT ===================== */
   {
-    n: 1, g: 1, slug: "1-expectations", name: "Expectations",
-    plain: "Students know what's expected and believe they can meet it.",
-    full: "Students engage with transparent, high, and achievable curricular and classroom expectations.",
-    why: [
-      "Making expectations available isn't the same as making them transparent. What seems obvious to us may be brand new to a student who is new to college or to our field.",
-      "Equity doesn't mean lowering expectations. It means being clear about them, explaining why they matter, and giving students the structure and support to meet them."
+    id: "culture-environment", t: 1, path: "culture-and-environment", focus: "Fall 2026 focus",
+    name: "Culture & Environment",
+    question: "How do students experience the learning environment we create?",
+    short: "Belonging, clear expectations, community norms, relationships, and disrupting bias.",
+    vision: [
+      "Culture & Environment is about helping every student feel they belong, in our classrooms and in our fields, and making sure they know what it takes to succeed.",
+      "Belonging grows when students believe the ideas, experiences, and resources they bring are recognized and put to use, and when they have a voice and agency in their own learning. It also means students see people of many backgrounds contributing to their field, understand how the dominant culture has shaped what their field values, and explore multiple cultural ways of knowing."
     ],
-    tryIt: [
-      "Share rubrics and annotated examples of strong work before an assignment is due.",
-      "Break large projects into milestones with feedback along the way.",
-      "Explain why an assignment matters and how it connects to course outcomes.",
-      "Explicitly teach the \"hidden curriculum\": how to use office hours, prepare for exams, or ask for help.",
-      "Offer flexible or student-chosen due dates within a window, so students have time to show mastery without lowering the standard."
+    groups: [
+      ["Transparency, Accessibility & Engagement", "the conditions for learning", [1, 2, 3, 4, 5]],
+      ["Power & Cultural Competence", "assumptions, bias, and working across difference", [6, 7, 8]]
     ],
-    fields: [
-      ["Engineering", "Before a CAD assembly project, students see an exemplar and a checklist and practice one component first."],
-      ["Writing", "An annotated sample essay shows exactly what a strong thesis and well-used evidence look like."],
-      ["Health sciences", "Walk through the skills check-off rubric together before the check-off."],
-      ["Online courses", "A \"start here\" page lays out the weekly rhythm, what is due when, and how to get help."]
+    questions: [
+      ["Who belongs and who can succeed?", [1, 6]],
+      ["How do students experience interactions?", [4, 7]],
+      ["Do students feel like valued contributors?", [3, 5, 8]],
+      ["Do course structures support voice and agency?", [2, 3]],
+      ["Are expectations clear?", [1]],
+      ["How do identities shape experience?", [6, 7, 8]]
     ],
-    reflect: [
-      "What do I assume students already know but have never actually taught them?",
-      "Could a first-generation student describe what success looks like in my course after week one?"
+    indicators: [
+      {
+        n: 1, slug: "1-expectations", name: "Expectations",
+        plain: "Students know what's expected and believe they can meet it.",
+        full: "Students engage with transparent, high, and achievable curricular and classroom expectations.",
+        why: [
+          "Making expectations available isn't the same as making them transparent. What seems obvious to us may be brand new to a student who is new to college or to our field.",
+          "Equity doesn't mean lowering expectations. It means being clear about them, explaining why they matter, and giving students the structure and support to meet them."
+        ],
+        tryIt: [
+          "Share rubrics and annotated examples of strong work before an assignment is due.",
+          "Break large projects into milestones with feedback along the way.",
+          "Explain why an assignment matters and how it connects to course outcomes.",
+          "Explicitly teach the \"hidden curriculum\": how to use office hours, prepare for exams, or ask for help.",
+          "Offer flexible or student-chosen due dates within a window, so students have time to show mastery without lowering the standard."
+        ],
+        fields: [
+          ["Engineering", "Before a CAD assembly project, students see an exemplar and a checklist and practice one component first."],
+          ["Writing", "An annotated sample essay shows exactly what a strong thesis and well-used evidence look like."],
+          ["Health sciences", "Walk through the skills check-off rubric together before the check-off."],
+          ["Online courses", "A \"start here\" page lays out the weekly rhythm, what is due when, and how to get help."]
+        ],
+        reflect: [
+          "What do I assume students already know but have never actually taught them?",
+          "Could a first-generation student describe what success looks like in my course after week one?"
+        ]
+      },
+      {
+        n: 2, slug: "2-think-time", name: "Think-time",
+        plain: "Students have time to think on their own and with peers before responding.",
+        full: "Students have time to think and reflect individually and discuss with peers to develop their ideas.",
+        why: [
+          "When we call on the first raised hand, we favor students who process quickly or feel confident speaking. Time to think first creates more entry points for everyone.",
+          "Participation isn't just speaking. Writing, sketching, listening, questioning, and revising ideas all count."
+        ],
+        tryIt: [
+          "Use think–pair–share: think alone, talk with a partner, then share with the class.",
+          "Have everyone write an answer before anyone responds.",
+          "Use anonymous polls, or yes/no and ABCD cards that everyone holds up at once.",
+          "Ask students to predict an outcome before a demonstration.",
+          "Let students revise their answer after hearing other perspectives."
+        ],
+        fields: [
+          ["Engineering", "Students sketch a free-body diagram on their own, then compare with a partner before the solution is shown."],
+          ["History", "A two-minute quick-write on a primary source before discussion opens."],
+          ["Art", "A silent gallery walk with sticky notes before a verbal critique."],
+          ["Online courses", "Students post their own response before they can see classmates' posts."]
+        ],
+        reflect: [
+          "In my class, who gets to think before someone else supplies the answer?",
+          "How long do I actually wait after asking a question?"
+        ]
+      },
+      {
+        n: 3, slug: "3-community-norms", name: "Community norms",
+        plain: "Students help create and revisit norms for how the class works together.",
+        full: "Students co-construct, discuss, adopt, and regularly revisit community norms for constructive interactions, discussions, classroom and lab routines, and group roles.",
+        why: [
+          "Handing students a list of rules is different from building shared expectations together. Co-constructing norms gives students a real role, while the instructor still owns safety, learning outcomes, and responding to harm.",
+          "Norms only work when they're practiced and revisited. If one student keeps getting interrupted, it isn't on that student to fix it."
+        ],
+        tryIt: [
+          "Ask students: How should we handle disagreement? What should happen when someone makes a mistake? What does fair participation look like?",
+          "Turn their answers into a short list of norms, such as \"critique ideas, not people\" or \"make room for perspectives beyond your own.\"",
+          "Post the norms where everyone can see them, and revisit them at midterm.",
+          "Name a norm out loud when you see it working."
+        ],
+        fields: [
+          ["Engineering lab", "\"The person asking for help keeps the mouse\" keeps help from turning into someone else doing the work."],
+          ["English", "Peer-review norms: critique the writing, not the writer."],
+          ["Art", "Studio critique norms co-created on the first day."],
+          ["Professional-technical", "Shop safety and help-seeking routines built with students, not just handed out."],
+          ["Online courses", "Discussion-board norms students draft and vote on in week one."]
+        ],
+        reflect: [
+          "What happens in my class when norms are written down but not followed?",
+          "When did I last revisit norms with students?"
+        ]
+      },
+      {
+        n: 4, slug: "4-collaboration-and-relationships", name: "Collaboration & relationships",
+        plain: "Students build connections and work together.",
+        full: "Students work together to create a classroom environment that promotes connection, relationships, and collaboration.",
+        why: [
+          "Belonging grows through repeated experiences of being recognized, respected, and able to contribute, not just a warm welcome on day one.",
+          "Putting students in groups doesn't guarantee collaboration or equal participation. Connection also doesn't require anyone to share personal information they're uncomfortable sharing."
+        ],
+        tryIt: [
+          "Learn students' names and pronounce them correctly.",
+          "Arrive early, play music, and chat with whoever wants to talk.",
+          "Start day one with a low-stakes group problem, then reshuffle the groups and do it again.",
+          "Rotate group roles so the same students aren't always leading or handling the equipment.",
+          "Thank students for their contributions."
+        ],
+        fields: [
+          ["Engineering", "Design teams rotate roles (CAD lead, researcher, presenter) and reflect on how the work was shared."],
+          ["Math", "Random groups solve problems at whiteboards around the room."],
+          ["Business", "Case-analysis teams with rotating roles and a short team check-in."],
+          ["Online courses", "Small, consistent \"home groups\" that meet for check-ins all quarter."]
+        ],
+        reflect: [
+          "What structures make collaboration possible in my course, beyond putting students in groups?",
+          "Could a student go a whole week in my class without anyone knowing their name?"
+        ]
+      },
+      {
+        n: 5, slug: "5-reflection-on-learning", name: "Reflection on learning",
+        plain: "Students look at evidence of their own learning and decide what to do next.",
+        full: "Students reflect on evidence of their current learning to identify next steps to support and/or adjust their learning strategies.",
+        why: [
+          "Students often read a grade as a verdict on their ability: \"I'm just not a math person.\" We want them asking instead, \"What does this tell me about what I understand and what I should practice?\"",
+          "Metacognition doesn't happen automatically. It has to be taught."
+        ],
+        tryIt: [
+          "Use exam wrappers: How did you prepare? What happened? What will you try next time?",
+          "Have students categorize their errors after an exam.",
+          "Allow revision after feedback.",
+          "End class with a \"muddiest point\" check.",
+          "Ask students to choose one specific strategy to try before the next assessment."
+        ],
+        fields: [
+          ["Engineering", "Exam corrections where students name the error type (free-body diagram, sign convention, equilibrium setup)."],
+          ["Writing", "A revision memo explaining what changed and why."],
+          ["World languages", "Students track their own recurring errors across assignments."],
+          ["Lab sciences", "\"What would you change in the procedure, and why?\""]
+        ],
+        reflect: [
+          "Do my students just see a grade, or do they get a structured chance to act on what it tells them?"
+        ]
+      },
+      {
+        n: 6, slug: "6-critical-dispositions", name: "Critical lens",
+        plain: "Students examine how race, culture, and language shape learning and belonging.",
+        full: "Students develop a critical lens toward race, culture, and language to disrupt assumptions and structures that harm learning and belongingness within the classroom learning community.",
+        why: [
+          "Every course carries assumptions about what knowledge counts, what professionalism looks like, how people should communicate, and who is expected to succeed.",
+          "We can examine those assumptions without making every lesson about identity. The point isn't to make assumptions about individual students. It's to examine our own practices and the structures that shape students' experiences."
+        ],
+        tryIt: [
+          "Review one course policy (late work, participation, attendance) for assumptions about students' lives.",
+          "Notice whose contributions show up in your textbook, readings, and examples.",
+          "Consider how language expectations affect students' chances to show what they know.",
+          "Ask who a design, policy, or text serves, and who it leaves out."
+        ],
+        fields: [
+          ["Engineering", "Who is the intended user? A tool designed around one assumed hand size or strength level won't work for everyone."],
+          ["Biology / biomimicry", "Whose ecological knowledge gets credited? Many nature-inspired \"discoveries\" echo what Indigenous and local communities have long known."],
+          ["English", "Whose dialect counts as \"correct,\" and why?"],
+          ["History", "Whose perspective tells the story in our sources?"],
+          ["Health sciences", "Whose bodies and skin tones appear in textbook images?"]
+        ],
+        reflect: [
+          "What assumptions about students, knowledge, or professionalism might be built into my course without my noticing?"
+        ]
+      },
+      {
+        n: 7, slug: "7-disrupting-bias", name: "Disrupting bias",
+        plain: "Students recognize and address bias that harms the learning community.",
+        full: "Students identify and disrupt forms of bias and behaviors that negatively impact the learning community.",
+        why: [
+          "Bias shows up in everyday interactions: who gets interrupted, whose ideas get credit, who is trusted with equipment, and who gets help without asking.",
+          "The responsibility for a respectful environment doesn't rest on the students being excluded. Instructors share it."
+        ],
+        tryIt: [
+          "Notice who speaks, who gets interrupted, and whose ideas get credit.",
+          "Use structured participation instead of relying only on volunteers.",
+          "Redirect a student's question to another student first, which spreads voice beyond the usual few.",
+          "Share when you're wrong, so it's safer for students to take risks.",
+          "Address microaggressions instead of ignoring them, and follow up privately when needed.",
+          "Give students a confidential way to raise concerns."
+        ],
+        scenarios: [
+          ["A student keeps taking over a teammate's work: \"Here, let me do it, it's easier.\"", "\"Let's pause. I want everyone to work through this. Give your teammate space, and you can offer suggestions without taking over.\""],
+          ["A student repeatedly interrupts a classmate during discussion.", "\"I'd like to let them finish their thought. Then we'll come back to yours.\""]
+        ],
+        fields: [
+          ["Engineering lab", "Watch who handles the equipment and who takes notes, and rotate on purpose."],
+          ["Discussion-based courses", "Track who speaks for a week. The pattern is often surprising."],
+          ["Online courses", "Notice whose posts get replies, and model responding to overlooked ones."]
+        ],
+        reflect: [
+          "What makes it hard for me to step in when I notice something?",
+          "What could I say in the moment? Practicing a response ahead of time makes it easier."
+        ]
+      },
+      {
+        n: 8, slug: "8-multicultural-society", name: "Multicultural society",
+        plain: "Students build skills for working in diverse communities and workplaces.",
+        full: "Students gain knowledge and skills to participate in a multicultural society and workplace.",
+        why: [
+          "Students won't automatically build these skills just by completing group projects. We have to design chances to practice them.",
+          "Working across differences isn't separate from learning the content. It makes the work more thoughtful and more responsive to the people it serves."
+        ],
+        tryIt: [
+          "Teach students how to give and receive constructive feedback.",
+          "Practice respectful disagreement and resolving conflict.",
+          "Invite guest speakers with varied backgrounds and career paths.",
+          "Have students explain ideas to a non-expert audience.",
+          "Build community needs and stakeholder perspectives into assignments."
+        ],
+        fields: [
+          ["Engineering", "Design a bus shelter that weighs what a person with a disability, a business owner, and a city planner each need."],
+          ["Biomimicry", "Teams name who their design serves and who might be left out, then pitch it to non-engineers."],
+          ["Social sciences", "A community-based project that partners with a local organization."],
+          ["Early childhood education", "Practice partnering with families from different cultural backgrounds."]
+        ],
+        reflect: [
+          "Where could students practice working through different perspectives in a way that's authentic to my field?"
+        ]
+      }
     ]
   },
+
+  /* ===================== 2. CURRICULUM & CONTENT ===================== */
   {
-    n: 2, g: 1, slug: "2-think-time", name: "Think-time",
-    plain: "Students have time to think on their own and with peers before responding.",
-    full: "Students have time to think and reflect individually and discuss with peers to develop their ideas.",
-    why: [
-      "When we call on the first raised hand, we favor students who process quickly or feel confident speaking. Time to think first creates more entry points for everyone.",
-      "Participation isn't just speaking. Writing, sketching, listening, questioning, and revising ideas all count."
+    id: "curriculum-content", t: 2, path: "curriculum-and-content",
+    name: "Curriculum & Content",
+    question: "What do students learn, and how does it connect to their lives and communities?",
+    short: "Prior knowledge, foundational ideas, coherent connections, and content tied to communities.",
+    vision: [
+      "Curriculum & Content is about students learning material that builds understanding and skills coherently. Students connect what they already know to new material, see where it leads next, and have the ideas they bring treated as resources for learning.",
+      "Learning also connects to students' careers, communities, and civic lives. Students explore the history of their field from multiple cultural perspectives, learn from scholars with diverse identities, and consider how their field's knowledge can help or harm communities."
     ],
-    tryIt: [
-      "Use think–pair–share: think alone, talk with a partner, then share with the class.",
-      "Have everyone write an answer before anyone responds.",
-      "Use anonymous polls, or yes/no and ABCD cards that everyone holds up at once.",
-      "Ask students to predict an outcome before a demonstration.",
-      "Let students revise their answer after hearing other perspectives."
+    groups: [
+      ["Foundational Structure & Transparency", "coherent, connected learning", [1, 2, 3, 4]],
+      ["Equity Ethic: Community Responsibility", "whose knowledge, and for whom", [5, 6, 7, 8, 9, 10]]
     ],
-    fields: [
-      ["Engineering", "Students sketch a free-body diagram on their own, then compare with a partner before the solution is shown."],
-      ["History", "A two-minute quick-write on a primary source before discussion opens."],
-      ["Art", "A silent gallery walk with sticky notes before a verbal critique."],
-      ["Online courses", "Students post their own response before they can see classmates' posts."]
+    questions: [
+      ["Do students see what they bring as valuable?", [1, 9]],
+      ["Does the course hang together for students?", [2, 3, 4]],
+      ["Whose knowledge and history do we teach?", [6, 8, 9]],
+      ["How does the content connect to communities?", [5, 7, 10]],
+      ["Can students see themselves in the field's future?", [8, 10]]
     ],
-    reflect: [
-      "In my class, who gets to think before someone else supplies the answer?",
-      "How long do I actually wait after asking a question?"
+    indicators: [
+      {
+        n: 1, slug: "1-prior-knowledge", name: "Prior knowledge",
+        plain: "Students' academic, cultural, and personal knowledge is drawn out and built into learning.",
+        full: "Students' prior academic knowledge, cultural knowledge, and experiences are elicited and embedded in learning activities.",
+        why: [
+          "Students never arrive as blank slates. What they already know from earlier courses, jobs, families, and communities is the foundation new learning builds on.",
+          "When we ask about and use that knowledge, students see their experiences as assets, and we find misconceptions early."
+        ],
+        tryIt: [
+          "Open a unit with \"What do you already know or wonder about this?\"",
+          "Use a quick pre-assessment or concept map before new material.",
+          "Ask where students have seen the idea in their work, home, or community.",
+          "Build a real example from what students share into the next lesson."
+        ],
+        fields: [
+          ["Engineering", "Before teaching levers, ask where students use leverage at work or at home."],
+          ["Nursing", "Students share caregiving experiences that connect to patient-communication skills."],
+          ["Economics", "Start a budget unit with how students' households actually make spending choices."],
+          ["Online courses", "A week-one survey on students' jobs and interests that you draw on all quarter."]
+        ],
+        reflect: [
+          "What knowledge do my students bring that my course currently ignores?",
+          "How do I find out what students already know before I start teaching?"
+        ]
+      },
+      {
+        n: 2, slug: "2-foundational-ideas", name: "Foundational ideas",
+        plain: "Students anchor their learning in the big ideas of the field.",
+        full: "Students anchor their learning to foundational STEM disciplinary ideas.",
+        why: [
+          "A course can feel like a long list of disconnected topics. Anchoring learning in a few big ideas helps students organize what they learn and transfer it to new situations.",
+          "Students who see the core ideas can make sense of new problems instead of memorizing procedures."
+        ],
+        tryIt: [
+          "Name 3–5 big ideas for your course and share them on day one.",
+          "Return to the big ideas at the start or end of each unit.",
+          "Ask students which big idea a new topic connects to.",
+          "Build a concept map with students that grows across the quarter."
+        ],
+        fields: [
+          ["Physics / engineering", "Equilibrium and conservation as threads that run through every unit."],
+          ["Writing", "Audience, purpose, and evidence as the ideas behind every assignment."],
+          ["Biology", "Structure fits function, revisited from cells to ecosystems."],
+          ["Art", "Composition and intent anchor every critique."]
+        ],
+        reflect: [
+          "If students remembered only three ideas from my course, what should they be?",
+          "Could my students name those ideas right now?"
+        ]
+      },
+      {
+        n: 3, slug: "3-alignment-of-purposes-and-ideas", name: "Purpose & alignment",
+        plain: "Students see how each assignment connects to the course's big ideas.",
+        full: "Students recognize how the purposes of assignments/activities align to the course's foundational STEM disciplinary ideas.",
+        why: [
+          "Students engage more deeply when they know why they're doing something. Without a clear purpose, assignments can feel like busywork.",
+          "Making purpose visible also helps students judge what matters most in their own work."
+        ],
+        tryIt: [
+          "Start each assignment with a short \"Purpose\" line.",
+          "Tie each activity to the big idea it supports.",
+          "Ask students to explain, in their own words, why an assignment matters.",
+          "Cut or revise any activity whose purpose you can't explain clearly."
+        ],
+        fields: [
+          ["Engineering", "\"This lab builds your skill reading free-body diagrams, which you'll use in every later unit.\""],
+          ["English", "\"This annotation practice prepares you to use evidence in your final essay.\""],
+          ["Automotive", "\"This diagnostic routine is the same process you'll use on the job.\""],
+          ["Online courses", "Each module page opens with \"Why this matters.\""]
+        ],
+        reflect: [
+          "Could a student explain why each assignment in my course exists?"
+        ]
+      },
+      {
+        n: 4, slug: "4-connections", name: "Connections",
+        plain: "Students connect content across previous, current, and upcoming lessons.",
+        full: "Students make connections between content in previous, current, and next lessons.",
+        why: [
+          "Learning sticks when new ideas connect to what came before. Students often don't see those links unless we make them explicit.",
+          "Connecting lessons also helps students see the course as a coherent story rather than separate pieces."
+        ],
+        tryIt: [
+          "Open class with \"Last time we… Today we… Next time we…\"",
+          "Use a short warm-up that draws on the previous lesson.",
+          "End class by previewing how today connects to what's next.",
+          "Ask students to write one connection they see between units."
+        ],
+        fields: [
+          ["Math", "A spiral warm-up that mixes in earlier topics."],
+          ["History", "A running timeline students add to each week."],
+          ["Engineering", "Show how this quarter's skills feed the next course in the sequence."],
+          ["World languages", "Reuse earlier vocabulary in new contexts on purpose."]
+        ],
+        reflect: [
+          "Where do students lose the thread between lessons or units in my course?"
+        ]
+      },
+      {
+        n: 5, slug: "5-ecosystems", name: "Benefit & harm",
+        plain: "Students learn how their field's knowledge can benefit or harm communities and ecosystems.",
+        full: "Students learn how STEM disciplinary knowledge, systems, and structures can be used to benefit or harm specific communities and ecosystems.",
+        why: [
+          "No field's knowledge is neutral in its effects. The same tools and ideas can help some communities while harming others.",
+          "Exploring both sides helps students see their responsibility as future professionals and citizens."
+        ],
+        tryIt: [
+          "Pair a topic with a real case where it helped or harmed a specific community.",
+          "Ask: Who benefits? Who bears the cost? Who decided?",
+          "Have students weigh trade-offs in a design, policy, or practice.",
+          "Invite a community voice affected by the issue."
+        ],
+        fields: [
+          ["Engineering", "Highway or dam projects that connected some communities while displacing others."],
+          ["Health sciences", "Medical research history, such as Henrietta Lacks, and informed consent."],
+          ["Computer science", "Algorithms that make biased decisions about loans or hiring."],
+          ["Business", "Supply chains and their effects on workers and environments."]
+        ],
+        reflect: [
+          "Where in my content could students examine who benefits and who is harmed?"
+        ]
+      },
+      {
+        n: 6, slug: "6-history-and-cultural-perspectives", name: "History & cultural perspectives",
+        plain: "Students critique privileged knowledge systems and learn their field's history from multiple cultures.",
+        full: "Students have opportunities to discuss and critique privileged knowledge systems and learn STEM disciplinary history from multiple cultural perspectives.",
+        why: [
+          "Most fields tell their history from a narrow set of perspectives, often leaving out contributions from other cultures and communities.",
+          "Seeing a fuller history helps students understand knowledge as something people build, and that people like them have always built it."
+        ],
+        tryIt: [
+          "Add one contribution from a non-Western or Indigenous tradition to a unit.",
+          "Ask students whose story the textbook tells, and whose it leaves out.",
+          "Discuss how the field decided what counts as valid knowledge.",
+          "Assign a short history piece from a different cultural perspective."
+        ],
+        fields: [
+          ["Math", "Mathematics developed in ancient India, the Islamic world, and Mesoamerica."],
+          ["Engineering / biomimicry", "Indigenous engineering and ecological knowledge, such as fire management and fish weirs."],
+          ["Music", "Whose traditions count as \"theory\" in the curriculum."],
+          ["Psychology", "Critiques of research built mostly on Western, educated, industrialized populations."]
+        ],
+        reflect: [
+          "Whose history of my field do my students currently learn?"
+        ]
+      },
+      {
+        n: 7, slug: "7-local-and-global-impacts", name: "Local & global impacts",
+        plain: "Students connect content to issues affecting local and global communities.",
+        full: "Students make connections between the STEM content they are learning and societal issues that impact local and global communities and ecosystems.",
+        why: [
+          "Content feels more meaningful when students see it working on problems they care about.",
+          "Local connections make learning concrete. Global ones help students see how systems link across places."
+        ],
+        tryIt: [
+          "Use a local issue as a course example or project.",
+          "Ask students which community issues they care about, and connect content to them.",
+          "Pair a local case with a global one.",
+          "Bring in local data, organizations, or guest speakers."
+        ],
+        fields: [
+          ["Engineering", "Stormwater, salmon habitat, or housing in Whatcom County as design problems."],
+          ["Environmental science", "Local water quality testing compared with global data."],
+          ["Sociology", "Local housing costs analyzed alongside national trends."],
+          ["Culinary", "Local food systems and global supply chains."]
+        ],
+        reflect: [
+          "What local issue could make my content come alive for students?"
+        ]
+      },
+      {
+        n: 8, slug: "8-scholarly-contributions", name: "Scholarly contributions",
+        plain: "Students learn about contributions from scholars with diverse identities.",
+        full: "Students learn about the contributions of scholars with a variety of identities.",
+        why: [
+          "When students only see one kind of person as an expert, they may conclude the field isn't for them.",
+          "Seeing scholars and practitioners with varied identities expands who students believe can contribute, including themselves."
+        ],
+        tryIt: [
+          "Add scholar or practitioner spotlights to readings or reflections.",
+          "Audit who your examples, citations, and guest speakers are.",
+          "Have students research a contributor from a group underrepresented in your field.",
+          "Highlight people who took nontraditional paths, including community college students."
+        ],
+        fields: [
+          ["Sciences", "Scientist Spotlights paired with weekly readings."],
+          ["Engineering", "Engineers from varied backgrounds tied to each unit's topic."],
+          ["Literature", "A reading list that spans identities and traditions."],
+          ["Trades", "Practitioner profiles that include women and people of color in the trade."]
+        ],
+        reflect: [
+          "Who are the experts in my course, and who might be missing?"
+        ]
+      },
+      {
+        n: 9, slug: "9-valuing-diversity", name: "Valuing diverse ways of knowing",
+        plain: "Learning draws on and values diverse cultures, ways of knowing, and frames of reference.",
+        full: "Students engage in learning experiences that draw on and value diverse cultures, ways of knowing, and/or frames of reference.",
+        why: [
+          "There is often more than one valid way to understand a problem. Different cultural frames can reveal ideas a single approach misses.",
+          "Valuing multiple ways of knowing tells students their own ways of thinking belong in the field."
+        ],
+        tryIt: [
+          "Invite multiple approaches to the same problem and compare them.",
+          "Include examples and contexts from a range of cultures.",
+          "Ask students how their community or family would approach a problem.",
+          "Treat different solution methods as resources, not errors."
+        ],
+        fields: [
+          ["Math", "Students share algorithms they learned in other countries."],
+          ["Engineering", "Compare a Western design approach with an Indigenous or traditional one."],
+          ["Health sciences", "Explore how different cultures understand health and healing."],
+          ["Business", "Compare decision-making norms across cultures."]
+        ],
+        reflect: [
+          "Does my course leave room for more than one right way of thinking?"
+        ]
+      },
+      {
+        n: 10, slug: "10-affecting-local-and-global-issues", name: "Aspirations & impact",
+        plain: "Students reflect on how their goals and skills could address community issues.",
+        full: "Students reflect on how their professional aspirations and STEM knowledge and skills could address community, local, and global issues.",
+        why: [
+          "Many students, especially first-generation and minoritized students, are motivated by helping their communities.",
+          "Connecting skills to that purpose builds persistence and helps students picture a future in the field."
+        ],
+        tryIt: [
+          "Ask: What problem would you want to solve with what you're learning?",
+          "Add a career-and-community reflection to a project.",
+          "Invite alumni or professionals to share how they serve communities.",
+          "Let students choose project topics tied to issues they care about."
+        ],
+        fields: [
+          ["Engineering", "Students pitch a design that addresses a need in their own community."],
+          ["Nursing", "Reflect on serving underserved patient populations."],
+          ["Computer science", "Projects built for local nonprofits."],
+          ["Early childhood education", "Connect coursework to the families students hope to serve."]
+        ],
+        reflect: [
+          "Do my students get to connect what they're learning to who they want to become?"
+        ]
+      }
     ]
   },
+
+  /* ===================== 3. DISCOURSE & LANGUAGE ===================== */
   {
-    n: 3, g: 1, slug: "3-community-norms", name: "Community norms",
-    plain: "Students help create and revisit norms for how the class works together.",
-    full: "Students co-construct, discuss, adopt, and regularly revisit community norms for constructive interactions, discussions, classroom and lab routines, and group roles.",
-    why: [
-      "Handing students a list of rules is different from building shared expectations together. Co-constructing norms gives students a real role, while the instructor still owns safety, learning outcomes, and responding to harm.",
-      "Norms only work when they're practiced and revisited. If one student keeps getting interrupted, it isn't on that student to fix it."
+    id: "discourse-language", t: 3, path: "discourse-and-language",
+    name: "Discourse & Language",
+    question: "Whose voices and ways of communicating are heard and valued?",
+    short: "Discussion norms, co-inquiry, multiple ways to communicate, and linguistic diversity.",
+    vision: [
+      "Discourse & Language is about empowering every student's voice in the classroom. Students' home languages and ways of communicating are treated as resources for understanding course content and social issues, not as problems to fix.",
+      "This means challenging the idea that only one kind of academic language counts, while giving students the structure and support they need to feel safe sharing their ideas."
     ],
-    tryIt: [
-      "Ask students: How should we handle disagreement? What should happen when someone makes a mistake? What does fair participation look like?",
-      "Turn their answers into a short list of norms, such as \"critique ideas, not people\" or \"make room for perspectives beyond your own.\"",
-      "Post the norms where everyone can see them, and revisit them at midterm.",
-      "Name a norm out loud when you see it working."
+    groups: [
+      ["Structured Group Discussions", "norms, co-inquiry, and elevating all voices", [1, 2, 3]],
+      ["Disciplinary Genres", "communicating ideas in many forms", [4]],
+      ["Linguistic Diversity", "languages as resources", [5, 6]]
     ],
-    fields: [
-      ["Engineering lab", "\"The person asking for help keeps the mouse\" keeps help from turning into someone else doing the work."],
-      ["English", "Peer-review norms: critique the writing, not the writer."],
-      ["Art", "Studio critique norms co-created on the first day."],
-      ["Professional-technical", "Shop safety and help-seeking routines built with students, not just handed out."],
-      ["Online courses", "Discussion-board norms students draft and vote on in week one."]
+    questions: [
+      ["Who talks in my discussions?", [1, 3]],
+      ["Am I the only expert in the room?", [2]],
+      ["How can students show their thinking?", [3, 4]],
+      ["Are students' languages valued?", [5, 6]]
     ],
-    reflect: [
-      "What happens in my class when norms are written down but not followed?",
-      "When did I last revisit norms with students?"
+    indicators: [
+      {
+        n: 1, slug: "1-co-constructing-discourse-norms", name: "Discussion norms & roles",
+        plain: "Students help create and revisit norms and roles for group discussions.",
+        full: "Students co-construct, discuss, adopt, and regularly revisit norms and roles for productive interactions during group discussions.",
+        why: [
+          "Without clear norms, a few confident voices tend to dominate discussions.",
+          "Shared norms and rotating roles give every student a defined way to take part."
+        ],
+        tryIt: [
+          "Co-create discussion norms, such as \"build on others' ideas\" or \"ask before you disagree.\"",
+          "Assign rotating roles: facilitator, recorder, reporter, skeptic.",
+          "Provide sentence starters for agreeing, disagreeing, and building on ideas.",
+          "Debrief how a discussion went, not just what was said."
+        ],
+        fields: [
+          ["Engineering", "Design-review roles: presenter, questioner, recorder."],
+          ["English", "Seminar norms with talking tokens."],
+          ["Math", "Sentence frames for critiquing a solution."],
+          ["Online courses", "Assigned discussion roles that rotate weekly."]
+        ],
+        reflect: [
+          "Who carries the discussions in my class, and who rarely speaks?"
+        ]
+      },
+      {
+        n: 2, slug: "2-co-inquiry", name: "Co-inquiry",
+        plain: "Students and instructors explore questions together as co-inquirers.",
+        full: "Students and instructors engage as co-inquirers during class discussions and activities.",
+        why: [
+          "When the instructor is the only source of answers, students learn to wait for the right answer instead of reasoning.",
+          "Exploring genuinely open questions together models how knowledge is built and shows students their thinking matters."
+        ],
+        tryIt: [
+          "Ask questions you don't know the answer to.",
+          "Respond to student ideas with \"Say more\" or \"How did you get there?\" rather than \"Correct.\"",
+          "Admit uncertainty and figure things out with students.",
+          "Let student questions shape part of a class session."
+        ],
+        fields: [
+          ["Engineering", "Investigate together why a prototype failed."],
+          ["Philosophy", "Discussion where the instructor participates as a fellow questioner."],
+          ["Lab sciences", "Students design part of the investigation."],
+          ["Art", "Instructor and students interpret a work together, with no single right reading."]
+        ],
+        reflect: [
+          "How often do I ask questions I genuinely don't know the answer to?"
+        ]
+      },
+      {
+        n: 3, slug: "3-multiple-forms-of-communication", name: "Multiple forms of communication",
+        plain: "Dialogue invites many ways of communicating so all voices are heard.",
+        full: "Students engage in dialogue that invites multiple forms of communication to elevate all voices.",
+        why: [
+          "Speaking up in a large group is only one way to contribute, and it favors some students over others.",
+          "Offering several ways to participate brings in voices that would otherwise stay silent."
+        ],
+        tryIt: [
+          "Mix verbal discussion with writing, drawing, polls, and chat.",
+          "Use small groups before whole-class sharing.",
+          "Accept sketches, gestures, and demonstrations as contributions.",
+          "Use shared docs or boards where everyone can add ideas."
+        ],
+        fields: [
+          ["Engineering", "Students explain with sketches and annotated diagrams."],
+          ["ESL", "Visual and gesture-supported discussion."],
+          ["History", "A silent written conversation on chart paper."],
+          ["Online courses", "Video, audio, or text discussion posts, student's choice."]
+        ],
+        reflect: [
+          "What counts as participation in my class, and who does that definition leave out?"
+        ]
+      },
+      {
+        n: 4, slug: "4-disciplinary-communication", name: "Disciplinary communication",
+        plain: "Students communicate ideas in many styles, genres, and formats for different purposes.",
+        full: "Students learn and communicate disciplinary ideas through multiple styles, genres, mediums, and modalities, for a variety of purposes.",
+        why: [
+          "Every field communicates in specific genres: reports, briefs, sketches, presentations. Students need explicit practice with them.",
+          "Varied formats also let students show what they understand in ways that play to their strengths."
+        ],
+        tryIt: [
+          "Teach the genres of your field explicitly, with models.",
+          "Have students explain the same idea to an expert and to a non-expert.",
+          "Offer a choice of format: poster, video, memo, infographic.",
+          "Analyze a professional example together."
+        ],
+        fields: [
+          ["Engineering", "A technical memo plus a public-facing explainer of the same design."],
+          ["Nursing", "A patient-education handout alongside a clinical note."],
+          ["Business", "A pitch deck and an executive summary."],
+          ["Sciences", "A lab report and a short science-communication video."]
+        ],
+        reflect: [
+          "Which genres does my field use that I've never explicitly taught?"
+        ]
+      },
+      {
+        n: 5, slug: "5-diverse-communication-resources", name: "Languages as resources",
+        plain: "Students' languages and ways of communicating are used as resources for learning.",
+        full: "Students' languages and ways of communicating are drawn upon as resources to learn the content and prepare to communicate ideas within the discipline.",
+        why: [
+          "Multilingual students and students who use different varieties of English bring real strengths to learning.",
+          "Using home languages to process ideas deepens understanding before students move into academic language."
+        ],
+        tryIt: [
+          "Let students discuss or brainstorm in any language before sharing in English.",
+          "Build glossaries that connect everyday and disciplinary terms.",
+          "Ask how a concept is described in students' home languages.",
+          "Value ideas over grammar in early drafts."
+        ],
+        fields: [
+          ["Engineering", "Students connect technical terms to words they use at work or home."],
+          ["Math", "Multilingual word walls."],
+          ["Writing", "Translanguaging in brainstorming and early drafts."],
+          ["Health sciences", "Practice explaining care instructions in multiple languages."]
+        ],
+        reflect: [
+          "How do I treat languages other than standard English in my classroom?"
+        ]
+      },
+      {
+        n: 6, slug: "6-learning-and-welcoming-diverse-academic-discourses", name: "Welcoming diverse discourses",
+        plain: "Class discussions and materials welcome all forms of language and communication.",
+        full: "Students interact with and use diverse academic discourse, welcoming all forms of language and communication within the class discussions and materials.",
+        why: [
+          "Academic language can act as a gatekeeper, signaling who belongs.",
+          "Welcoming many forms of language, while teaching the discourse of the field, helps students learn without feeling they must give up who they are."
+        ],
+        tryIt: [
+          "Include readings and media in varied voices and registers.",
+          "Make academic discourse explicit, for example: \"Here's how engineers phrase this, and why.\"",
+          "Avoid correcting dialect in discussion when the idea is clear.",
+          "Discuss when different registers are useful."
+        ],
+        fields: [
+          ["English", "Code-meshing and readings in varied Englishes."],
+          ["Engineering", "Compare technical writing with how a field technician explains the same issue."],
+          ["Social sciences", "Primary sources in community voices."],
+          ["Online courses", "Model a welcoming, varied tone in your own posts."]
+        ],
+        reflect: [
+          "What message do my reactions to students' language send about who belongs?"
+        ]
+      }
     ]
   },
+
+  /* ===================== 4. ASSESSMENT FOR LEARNING ===================== */
   {
-    n: 4, g: 1, slug: "4-collaboration-and-relationships", name: "Collaboration & relationships",
-    plain: "Students build connections and work together.",
-    full: "Students work together to create a classroom environment that promotes connection, relationships, and collaboration.",
-    why: [
-      "Belonging grows through repeated experiences of being recognized, respected, and able to contribute, not just a warm welcome on day one.",
-      "Putting students in groups doesn't guarantee collaboration or equal participation. Connection also doesn't require anyone to share personal information they're uncomfortable sharing."
+    id: "assessment-learning", t: 4, path: "assessment-for-learning",
+    name: "Assessment for Learning",
+    question: "How do assessment, feedback, and grading support every student's growth?",
+    short: "Transparent criteria, varied evidence, actionable feedback, and equitable grading.",
+    vision: [
+      "Assessment for Learning is about instruction that responds to students' strengths and needs. Instructors use evidence of student thinking to guide teaching decisions, and students understand what success looks like and where they stand.",
+      "Students get support to build strategies for improving, and grading encourages growth, so students can make mistakes and learn from them."
     ],
-    tryIt: [
-      "Learn students' names and pronounce them correctly.",
-      "Arrive early, play music, and chat with whoever wants to talk.",
-      "Start day one with a low-stakes group problem, then reshuffle the groups and do it again.",
-      "Rotate group roles so the same students aren't always leading or handling the equipment.",
-      "Thank students for their contributions."
+    groups: [
+      ["Transparency & Alignment", "clear, aligned assessment", [1, 2, 3]],
+      ["Feedback & Reflection", "feedback that drives improvement", [4, 5, 6]],
+      ["Equitable Grading", "grading that supports learning", [7, 8]]
     ],
-    fields: [
-      ["Engineering", "Design teams rotate roles (CAD lead, researcher, presenter) and reflect on how the work was shared."],
-      ["Math", "Random groups solve problems at whiteboards around the room."],
-      ["Business", "Case-analysis teams with rotating roles and a short team check-in."],
-      ["Online courses", "Small, consistent \"home groups\" that meet for check-ins all quarter."]
+    questions: [
+      ["Do students know what they're being assessed on?", [1, 2]],
+      ["Can students show learning in more than one way?", [3]],
+      ["Does feedback lead to improvement?", [4, 5]],
+      ["Do I adjust teaching based on students?", [6]],
+      ["Does my grading support growth?", [7, 8]]
     ],
-    reflect: [
-      "What structures make collaboration possible in my course, beyond putting students in groups?",
-      "Could a student go a whole week in my class without anyone knowing their name?"
-    ]
-  },
-  {
-    n: 5, g: 1, slug: "5-reflection-on-learning", name: "Reflection on learning",
-    plain: "Students look at evidence of their own learning and decide what to do next.",
-    full: "Students reflect on evidence of their current learning to identify next steps to support and/or adjust their learning strategies.",
-    why: [
-      "Students often read a grade as a verdict on their ability: \"I'm just not a math person.\" We want them asking instead, \"What does this tell me about what I understand and what I should practice?\"",
-      "Metacognition doesn't happen automatically. It has to be taught."
-    ],
-    tryIt: [
-      "Use exam wrappers: How did you prepare? What happened? What will you try next time?",
-      "Have students categorize their errors after an exam.",
-      "Allow revision after feedback.",
-      "End class with a \"muddiest point\" check.",
-      "Ask students to choose one specific strategy to try before the next assessment."
-    ],
-    fields: [
-      ["Engineering", "Exam corrections where students name the error type (free-body diagram, sign convention, equilibrium setup)."],
-      ["Writing", "A revision memo explaining what changed and why."],
-      ["World languages", "Students track their own recurring errors across assignments."],
-      ["Lab sciences", "\"What would you change in the procedure, and why?\""]
-    ],
-    reflect: [
-      "Do my students just see a grade, or do they get a structured chance to act on what it tells them?"
-    ]
-  },
-  {
-    n: 6, g: 2, slug: "6-critical-dispositions", name: "Critical lens",
-    plain: "Students examine how race, culture, and language shape learning and belonging.",
-    full: "Students develop a critical lens toward race, culture, and language to disrupt assumptions and structures that harm learning and belongingness within the classroom learning community.",
-    why: [
-      "Every course carries assumptions about what knowledge counts, what professionalism looks like, how people should communicate, and who is expected to succeed.",
-      "We can examine those assumptions without making every lesson about identity. The point isn't to make assumptions about individual students. It's to examine our own practices and the structures that shape students' experiences."
-    ],
-    tryIt: [
-      "Review one course policy (late work, participation, attendance) for assumptions about students' lives.",
-      "Notice whose contributions show up in your textbook, readings, and examples.",
-      "Consider how language expectations affect students' chances to show what they know.",
-      "Ask who a design, policy, or text serves, and who it leaves out."
-    ],
-    fields: [
-      ["Engineering", "Who is the intended user? A tool designed around one assumed hand size or strength level won't work for everyone."],
-      ["Biology / biomimicry", "Whose ecological knowledge gets credited? Many nature-inspired \"discoveries\" echo what Indigenous and local communities have long known."],
-      ["English", "Whose dialect counts as \"correct,\" and why?"],
-      ["History", "Whose perspective tells the story in our sources?"],
-      ["Health sciences", "Whose bodies and skin tones appear in textbook images?"]
-    ],
-    reflect: [
-      "What assumptions about students, knowledge, or professionalism might be built into my course without my noticing?"
-    ]
-  },
-  {
-    n: 7, g: 2, slug: "7-disrupting-bias", name: "Disrupting bias",
-    plain: "Students recognize and address bias that harms the learning community.",
-    full: "Students identify and disrupt forms of bias and behaviors that negatively impact the learning community.",
-    why: [
-      "Bias shows up in everyday interactions: who gets interrupted, whose ideas get credit, who is trusted with equipment, and who gets help without asking.",
-      "The responsibility for a respectful environment doesn't rest on the students being excluded. Instructors share it."
-    ],
-    tryIt: [
-      "Notice who speaks, who gets interrupted, and whose ideas get credit.",
-      "Use structured participation instead of relying only on volunteers.",
-      "Redirect a student's question to another student first, which spreads voice beyond the usual few.",
-      "Share when you're wrong, so it's safer for students to take risks.",
-      "Address microaggressions instead of ignoring them, and follow up privately when needed.",
-      "Give students a confidential way to raise concerns."
-    ],
-    scenarios: [
-      ["A student keeps taking over a teammate's work: \"Here, let me do it, it's easier.\"", "\"Let's pause. I want everyone to work through this. Give your teammate space, and you can offer suggestions without taking over.\""],
-      ["A student repeatedly interrupts a classmate during discussion.", "\"I'd like to let them finish their thought. Then we'll come back to yours.\""]
-    ],
-    fields: [
-      ["Engineering lab", "Watch who handles the equipment and who takes notes, and rotate on purpose."],
-      ["Discussion-based courses", "Track who speaks for a week. The pattern is often surprising."],
-      ["Online courses", "Notice whose posts get replies, and model responding to overlooked ones."]
-    ],
-    reflect: [
-      "What makes it hard for me to step in when I notice something?",
-      "What could I say in the moment? Practicing a response ahead of time makes it easier."
-    ]
-  },
-  {
-    n: 8, g: 2, slug: "8-multicultural-society", name: "Multicultural society",
-    plain: "Students build skills for working in diverse communities and workplaces.",
-    full: "Students gain knowledge and skills to participate in a multicultural society and workplace.",
-    why: [
-      "Students won't automatically build these skills just by completing group projects. We have to design chances to practice them.",
-      "Working across differences isn't separate from learning the content. It makes the work more thoughtful and more responsive to the people it serves."
-    ],
-    tryIt: [
-      "Teach students how to give and receive constructive feedback.",
-      "Practice respectful disagreement and resolving conflict.",
-      "Invite guest speakers with varied backgrounds and career paths.",
-      "Have students explain ideas to a non-expert audience.",
-      "Build community needs and stakeholder perspectives into assignments."
-    ],
-    fields: [
-      ["Engineering", "Design a bus shelter that weighs what a person with a disability, a business owner, and a city planner each need."],
-      ["Biomimicry", "Teams name who their design serves and who might be left out, then pitch it to non-engineers."],
-      ["Social sciences", "A community-based project that partners with a local organization."],
-      ["Early childhood education", "Practice partnering with families from different cultural backgrounds."]
-    ],
-    reflect: [
-      "Where could students practice working through different perspectives in a way that's authentic to my field?"
+    indicators: [
+      {
+        n: 1, slug: "1-aligning-learning-and-assessment", name: "Aligning learning & assessment",
+        plain: "Students see how learning objectives connect to assessments.",
+        full: "Students explore how the learning objectives for course activities/assignments align with classroom assessments.",
+        why: [
+          "When assessments feel disconnected from what was taught, students can't prepare effectively.",
+          "Making alignment visible helps students focus on what matters and trust the assessment."
+        ],
+        tryIt: [
+          "Label each assessment item with the objective it measures.",
+          "Share objectives at the start of each unit.",
+          "Have students map practice activities to objectives.",
+          "Check that every objective is actually assessed, and every assessment targets an objective."
+        ],
+        fields: [
+          ["Engineering", "Exam questions tagged to unit outcomes."],
+          ["Writing", "Rubric rows tied directly to course outcomes."],
+          ["Lab sciences", "Lab skills checklist linked to objectives."],
+          ["Online courses", "Each module lists its objectives and the assessment that measures them."]
+        ],
+        reflect: [
+          "Could a student see which objective each part of my exams measures?"
+        ]
+      },
+      {
+        n: 2, slug: "2-assessment-criteria", name: "Assessment criteria",
+        plain: "Students can examine, question, or help shape the assessment criteria.",
+        full: "Students have opportunities to examine, challenge, and/or contribute to the assessment criteria.",
+        why: [
+          "Students understand criteria better when they work with them, not just read them.",
+          "Co-creating or critiquing criteria builds ownership and helps students recognize quality."
+        ],
+        tryIt: [
+          "Have students score sample work with the rubric before using it.",
+          "Co-create part of a rubric with students.",
+          "Invite questions about criteria: \"What does 'thorough' mean here?\"",
+          "Revise criteria based on student input."
+        ],
+        fields: [
+          ["Engineering", "Students help define what a strong design presentation looks like."],
+          ["English", "Class builds a rubric for an effective argument."],
+          ["Art", "Students co-create critique criteria."],
+          ["Business", "Students rank sample pitches and derive the criteria."]
+        ],
+        reflect: [
+          "Do my students understand my criteria the way I do?"
+        ]
+      },
+      {
+        n: 3, slug: "3-eliciting-evidence-of-learning", name: "Multiple ways to show learning",
+        plain: "Students have a variety of ways to show what they know.",
+        full: "Students have a variety of ways to show that they have developed the targeted knowledge, skills, dispositions, etc.",
+        why: [
+          "A single format, like timed exams, measures that format as much as the learning.",
+          "Varied evidence gives a fuller picture of what students know and reduces barriers unrelated to the objective."
+        ],
+        tryIt: [
+          "Mix exams with projects, oral explanations, portfolios, and demonstrations.",
+          "Offer a choice of format for some assignments.",
+          "Allow oral follow-up when written work is unclear.",
+          "Use low-stakes checks throughout, not just high-stakes tests."
+        ],
+        fields: [
+          ["Engineering", "Choose to explain a solution in writing or in a short recorded walkthrough."],
+          ["Languages", "Show proficiency through conversation, writing, or a presentation."],
+          ["Nursing", "Skills demonstrations alongside written exams."],
+          ["Math", "Error-analysis tasks alongside problem sets."]
+        ],
+        reflect: [
+          "Which students might know more than my assessments show?"
+        ]
+      },
+      {
+        n: 4, slug: "4-feedback", name: "Feedback",
+        plain: "Students receive frequent, specific, actionable feedback from peers and instructors.",
+        full: "Students receive frequent, descriptive, and actionable peer and instructor feedback aligned with the assessment criteria.",
+        why: [
+          "A grade alone tells students where they stand, not how to improve.",
+          "Specific, timely feedback tied to criteria gives students a clear next step."
+        ],
+        tryIt: [
+          "Give feedback on drafts, not just final work.",
+          "Use the format \"one strength, one next step.\"",
+          "Train students in structured peer feedback.",
+          "Tie comments to rubric language."
+        ],
+        fields: [
+          ["Engineering", "Design-review feedback before final submission."],
+          ["Writing", "Peer review with a guided protocol."],
+          ["Culinary / trades", "Real-time feedback during practice."],
+          ["Online courses", "Short audio or video feedback on drafts."]
+        ],
+        reflect: [
+          "Do students get feedback while there's still time to use it?"
+        ]
+      },
+      {
+        n: 5, slug: "5-using-feedback-to-improve-learning", name: "Using feedback to improve",
+        plain: "Students use criteria and feedback to evaluate and improve their own work.",
+        full: "Students use assessment criteria and peer/instructor feedback to evaluate their own learning and determine how they will improve the quality of their work.",
+        why: [
+          "Feedback only helps if students act on it. Many students don't know how to use it without guidance.",
+          "Self-assessment builds independent learners who can judge their own work."
+        ],
+        tryIt: [
+          "Require a revision plan in response to feedback.",
+          "Have students self-assess with the rubric before submitting.",
+          "Build in revise-and-resubmit opportunities.",
+          "Ask: \"What feedback did you use, and how?\""
+        ],
+        fields: [
+          ["Engineering", "Students revise a CAD model and log what changed and why."],
+          ["Writing", "A revision memo submitted with the final draft."],
+          ["Math", "Test corrections with explanations."],
+          ["Art", "Artist statements responding to critique."]
+        ],
+        reflect: [
+          "What happens to my feedback after students receive it?"
+        ]
+      },
+      {
+        n: 6, slug: "6-using-feedback-to-improve-teaching", name: "Using feedback to improve teaching",
+        plain: "Instructors and classmates use student feedback to improve the course.",
+        full: "Student feedback is used by instructors and classmates to improve the course structure, content, pedagogies, pacing, etc.",
+        why: [
+          "Students experience the course in ways we can't see from the front of the room.",
+          "Asking for and acting on their feedback improves the course and shows students their voice matters."
+        ],
+        tryIt: [
+          "Run a midterm survey: What's helping? What's getting in the way?",
+          "Use exit tickets to adjust the next class.",
+          "Share what you heard and what you'll change.",
+          "Ask students to suggest pacing or format adjustments."
+        ],
+        fields: [
+          ["Engineering", "Adjust pacing after a muddiest-point check reveals confusion."],
+          ["Any course", "A \"start, stop, continue\" survey at week 4."],
+          ["Online courses", "An anonymous weekly pulse check."],
+          ["Lab courses", "Students suggest procedure improvements."]
+        ],
+        reflect: [
+          "When did I last change something because of what students told me?"
+        ]
+      },
+      {
+        n: 7, slug: "7-grading", name: "Grading for growth",
+        plain: "Grading reflects practice, feedback, and revision, so students can learn from mistakes.",
+        full: "Student assessment and grading practices reflect a culture of practice through iteration, feedback, and revision that allows students to learn without negative consequences.",
+        why: [
+          "When every mistake is permanently penalized, students avoid risks and hide confusion.",
+          "Grading that rewards growth tells students that learning, not first attempts, is what counts."
+        ],
+        tryIt: [
+          "Weight later attempts or final mastery more than early ones.",
+          "Allow retakes or revisions on key assessments.",
+          "Make practice low-stakes or ungraded.",
+          "Consider standards-based or specifications grading for part of the course."
+        ],
+        fields: [
+          ["Engineering", "Quiz retakes on core skills such as free-body diagrams."],
+          ["Writing", "Portfolio grading based on final revised work."],
+          ["Math", "Mastery-based checkpoints."],
+          ["Trades", "Skills signed off when mastered, not on the first try."]
+        ],
+        reflect: [
+          "Does my grading reward learning, or penalize early mistakes?"
+        ]
+      },
+      {
+        n: 8, slug: "8-flexibility-and-empathy", name: "Flexibility & empathy",
+        plain: "Assignments and assessments account for students' lives outside class.",
+        full: "Students' lives outside of the classroom are taken into consideration for assignments and assessments, and instructors exhibit flexibility and empathy.",
+        why: [
+          "Many students juggle jobs, caregiving, commuting, and health. Rigid policies can measure circumstances more than learning.",
+          "Flexibility with clear boundaries keeps standards high while removing barriers that don't relate to learning."
+        ],
+        tryIt: [
+          "Offer a grace window or a few no-questions-asked extensions.",
+          "Let students choose due dates within a window.",
+          "Ask early in the quarter about constraints students face.",
+          "Respond to life events with empathy and a plan."
+        ],
+        fields: [
+          ["Engineering", "Student-chosen due dates within a set window."],
+          ["Nursing", "Flexible make-up options for clinical conflicts."],
+          ["Online courses", "Weekly windows instead of fixed daily deadlines."],
+          ["Any course", "A token system for extensions."]
+        ],
+        reflect: [
+          "Which of my policies assume students have no responsibilities outside class?"
+        ]
+      }
     ]
   }
-];
-
-const QUESTIONS = [
-  ["Who belongs and who can succeed?", [1, 6]],
-  ["How do students experience interactions?", [4, 7]],
-  ["Do students feel like valued contributors?", [3, 5, 8]],
-  ["Do course structures support voice and agency?", [2, 3]],
-  ["Are expectations clear?", [1]],
-  ["How do identities shape experience?", [6, 7, 8]]
 ];
 
 const NOTE_FIELDS = [
@@ -472,175 +1191,222 @@ const NOTE_FIELDS = [
   ["change", "Something I might want to change", "What could I try?"]
 ];
 
-// ---------- Notes storage (per browser) ----------
-const STORE_KEY = "few-ce-notes-v1";
+/* ---------- Notes storage (per browser) ---------- */
+const STORE_KEY = "few-bis-notes-v1";
 let notes = {};
 try { notes = JSON.parse(localStorage.getItem(STORE_KEY)) || {}; } catch (e) { notes = {}; }
+// Carry over notes from the earlier Culture & Environment-only version
+try {
+  const old = JSON.parse(localStorage.getItem("few-ce-notes-v1"));
+  if (old && !notes["culture-environment"]) { notes["culture-environment"] = old; }
+} catch (e) {}
 function saveNotes() { try { localStorage.setItem(STORE_KEY, JSON.stringify(notes)); } catch (e) {} }
-function hasNotes(n) { const x = notes[n]; return x && Object.values(x).some(v => v && v.trim()); }
+function noteFor(cid, n) { return (notes[cid] || {})[n] || {}; }
+function hasNotes(cid, n) { return Object.values(noteFor(cid, n)).some(v => v && v.trim()); }
 
-// ---------- Helpers ----------
+/* ---------- Helpers ---------- */
 const esc = s => String(s).replace(/[&<>"']/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
-const groupName = g => g === 1 ? "Transparency, Accessibility & Engagement" : "Power & Cultural Competence";
+const $ = id => document.getElementById(id);
+const byId = id => COMPONENTS.find(c => c.id === id);
+function setTheme(el, t) { el.classList.remove("t1", "t2", "t3", "t4"); el.classList.add("t" + t); }
 
-// ---------- Cards ----------
+/* ---------- Home ---------- */
+function renderHome() {
+  $("comps").innerHTML = COMPONENTS.map(c => `
+    <a class="comp t${c.t}" href="#${c.id}" style="text-decoration:none">
+      <h2>${esc(c.name)}</h2>
+      <p class="q">${esc(c.question)}</p>
+      <p class="d">${esc(c.short)}</p>
+      <div class="meta">
+        <span class="pill">${c.indicators.length} indicators</span>
+        ${c.focus ? `<span class="pill focus">${esc(c.focus)}</span>` : ""}
+      </div>
+      <span class="go">Explore →</span>
+    </a>`).join("");
+}
+
+/* ---------- Component view ---------- */
+let comp = null, activeQ = null;
+function renderComponent() {
+  setTheme(document.body, comp.t);
+  $("cEyebrow").textContent = "Framework component" + (comp.focus ? " · " + comp.focus : "");
+  const words = comp.name.split(" & ");
+  $("cTitle").innerHTML = words.length === 2 ? `${esc(words[0])} &amp; <span>${esc(words[1])}</span>` : esc(comp.name);
+  $("cQuestion").textContent = comp.question;
+  $("cVision").innerHTML = comp.vision.map(p => `<p>${esc(p)}</p>`).join("");
+  activeQ = null;
+  renderChips();
+  renderCards();
+  $("others").innerHTML = COMPONENTS.filter(c => c.id !== comp.id)
+    .map(c => `<a class="t${c.t}" href="#${c.id}">${esc(c.name)}</a>`).join("");
+  document.title = comp.name + " · Equity Framework Explorer";
+}
+function renderChips() {
+  $("chips").innerHTML = comp.questions.map(([q], i) =>
+    `<button class="chip" data-q="${i}" aria-pressed="${activeQ === i}">${esc(q)}</button>`).join("");
+}
 function renderCards() {
-  [1, 2].forEach(g => {
-    document.getElementById("grid" + g).innerHTML = INDICATORS.filter(i => i.g === g).map(i => `
-      <button class="card g${i.g}" data-n="${i.n}" aria-label="Indicator ${i.n}: ${esc(i.name)}">
+  const range = ns => ns.length > 1 ? `Indicators ${ns[0]}–${ns[ns.length - 1]}` : `Indicator ${ns[0]}`;
+  $("groups").innerHTML = comp.groups.map(([name, tag, ns]) => `
+    <div class="group-title"><h2>${esc(name)}</h2><span class="tag">${range(ns)} · ${esc(tag)}</span></div>
+    <div class="grid">${ns.map(n => {
+      const i = comp.indicators.find(x => x.n === n);
+      return `<button class="card" data-n="${i.n}" aria-label="Indicator ${i.n}: ${esc(i.name)}">
         <span class="num" aria-hidden="true">${i.n}</span>
         <h3>${esc(i.name)}</h3>
         <p>${esc(i.plain)}</p>
-        ${hasNotes(i.n) ? '<span class="noted">✎ notes</span>' : ""}
-      </button>`).join("");
-  });
+        ${hasNotes(comp.id, i.n) ? '<span class="noted">✎ notes</span>' : ""}
+      </button>`;
+    }).join("")}</div>`).join("");
   applyFilter();
 }
-
-// ---------- Guiding-question filter ----------
-let activeQ = null;
-function renderChips() {
-  document.getElementById("chips").innerHTML = QUESTIONS.map(([q], i) =>
-    `<button class="chip" data-q="${i}" aria-pressed="${activeQ === i}">${esc(q)}</button>`).join("");
-}
 function applyFilter() {
-  const set = activeQ === null ? null : QUESTIONS[activeQ][1];
-  document.querySelectorAll(".card").forEach(c => c.classList.toggle("dim", !!set && !set.includes(+c.dataset.n)));
+  const set = activeQ === null ? null : comp.questions[activeQ][1];
+  document.querySelectorAll("#groups .card").forEach(c => c.classList.toggle("dim", !!set && !set.includes(+c.dataset.n)));
 }
-document.getElementById("chips").addEventListener("click", e => {
+$("chips").addEventListener("click", e => {
   const b = e.target.closest(".chip"); if (!b) return;
   const i = +b.dataset.q; activeQ = activeQ === i ? null : i;
   renderChips(); applyFilter();
 });
 
-// ---------- Detail dialog ----------
-const detail = document.getElementById("detail");
-let current = 1, currentTab = "why";
+/* ---------- Indicator dialog ---------- */
+const detail = $("detail");
+let current = 1, currentTab = "why", routing = false;
 
 function bodyFor(ind, tab) {
-  if (tab === "why") {
-    return `<p class="quote">Full indicator: ${esc(ind.full)}</p>` + ind.why.map(p => `<p>${esc(p)}</p>`).join("");
-  }
+  if (tab === "why") return `<p class="quote">Full indicator: ${esc(ind.full)}</p>` + ind.why.map(p => `<p>${esc(p)}</p>`).join("");
   if (tab === "try") {
     let h = `<h3>Small changes to try</h3><ul>${ind.tryIt.map(t => `<li>${esc(t)}</li>`).join("")}</ul>`;
-    if (ind.scenarios) {
-      h += `<h3>Practice a response</h3>` + ind.scenarios.map(([s, r]) =>
-        `<div class="scenario"><p><strong>Scenario:</strong> ${esc(s)}</p><p><strong>You might say:</strong> ${esc(r)}</p></div>`).join("");
-    }
+    if (ind.scenarios) h += `<h3>Practice a response</h3>` + ind.scenarios.map(([s, r]) =>
+      `<div class="scenario"><p><strong>Scenario:</strong> ${esc(s)}</p><p><strong>You might say:</strong> ${esc(r)}</p></div>`).join("");
     return h;
   }
-  if (tab === "fields") {
-    return `<p>What this can look like in different settings. Translate it to yours.</p>` +
-      ind.fields.map(([f, t]) => `<div class="field"><strong>${esc(f)}</strong><span>${esc(t)}</span></div>`).join("");
-  }
-  if (tab === "reflect") {
-    return `<h3>Questions to sit with</h3><ul>${ind.reflect.map(r => `<li>${esc(r)}</li>`).join("")}</ul>
-      <h3>Then consider</h3><ul><li>How might a student experience this in my course right now? Think of a specific moment.</li>
-      <li>How might that experience differ for students whose backgrounds differ from mine?</li></ul>`;
-  }
-  const n = notes[ind.n] || {};
+  if (tab === "fields") return `<p>What this can look like in different settings. Translate it to yours.</p>` +
+    ind.fields.map(([f, t]) => `<div class="field"><strong>${esc(f)}</strong><span>${esc(t)}</span></div>`).join("");
+  if (tab === "reflect") return `<h3>Questions to sit with</h3><ul>${ind.reflect.map(r => `<li>${esc(r)}</li>`).join("")}</ul>
+    <h3>Then consider</h3><ul><li>How might a student experience this in my course right now? Think of a specific moment.</li>
+    <li>How might that experience differ for students whose backgrounds differ from mine?</li></ul>`;
+  const n = noteFor(comp.id, ind.n);
   return NOTE_FIELDS.map(([k, label, hint]) => `
     <label class="note" for="note-${k}">${esc(label)} <span>· ${esc(hint)}</span></label>
     <textarea id="note-${k}" data-key="${k}">${esc(n[k] || "")}</textarea>`).join("") +
     `<p class="hint">Saved automatically in this browser only. Nothing is sent anywhere.</p>`;
 }
-
 function renderDetail() {
-  const ind = INDICATORS.find(i => i.n === current);
-  const grp = document.getElementById("dGroup");
-  grp.textContent = `Indicator ${ind.n} · ${groupName(ind.g)}`;
-  grp.className = "d-group g" + ind.g;
-  document.getElementById("dTitle").textContent = ind.name;
-  document.getElementById("dPlain").textContent = ind.plain;
-  document.getElementById("bisLink").href = BIS + ind.slug;
-  document.querySelectorAll("#detail .tab").forEach(t => t.setAttribute("aria-selected", t.dataset.tab === currentTab));
-  document.getElementById("dBody").innerHTML = bodyFor(ind, currentTab);
-  document.getElementById("prevBtn").disabled = current === 1;
-  document.getElementById("nextBtn").disabled = current === 8;
-  document.getElementById("prevBtn").style.visibility = current === 1 ? "hidden" : "visible";
-  document.getElementById("nextBtn").style.visibility = current === 8 ? "hidden" : "visible";
+  const ind = comp.indicators.find(i => i.n === current);
+  const grp = comp.groups.find(g => g[2].includes(current));
+  setTheme(detail, comp.t);
+  $("dGroup").textContent = `${comp.name} · Indicator ${ind.n}${grp ? " · " + grp[0] : ""}`;
+  $("dTitle").textContent = ind.name;
+  $("dPlain").textContent = ind.plain;
+  $("bisLink").href = BIS + comp.path + "/" + ind.slug;
+  detail.querySelectorAll(".tab").forEach(t => t.setAttribute("aria-selected", t.dataset.tab === currentTab));
+  $("dBody").innerHTML = bodyFor(ind, currentTab);
+  const max = comp.indicators.length;
+  $("prevBtn").style.visibility = current === 1 ? "hidden" : "visible";
+  $("nextBtn").style.visibility = current === max ? "hidden" : "visible";
 }
-
 function openDetail(n, tab) {
   current = n; currentTab = tab || "why";
   renderDetail();
   if (!detail.open) detail.showModal();
-  detail.querySelector(".d-body").scrollTop = 0;
-  if (location.hash !== "#indicator-" + n) history.replaceState(null, "", "#indicator-" + n);
+  detail.scrollTop = 0;
+  const h = `#${comp.id}/${n}`;
+  if (location.hash !== h) { routing = true; history.replaceState(null, "", h); routing = false; }
 }
-
-document.querySelector("main").addEventListener("click", e => {
-  const c = e.target.closest(".card"); if (c) openDetail(+c.dataset.n);
-});
+$("groups").addEventListener("click", e => { const c = e.target.closest(".card"); if (c) openDetail(+c.dataset.n); });
 detail.querySelector(".tabs").addEventListener("click", e => {
-  const t = e.target.closest(".tab"); if (!t) return;
-  currentTab = t.dataset.tab; renderDetail();
+  const t = e.target.closest(".tab"); if (!t) return; currentTab = t.dataset.tab; renderDetail();
 });
-document.getElementById("dBody").addEventListener("input", e => {
+$("dBody").addEventListener("input", e => {
   if (e.target.tagName !== "TEXTAREA") return;
-  notes[current] = notes[current] || {};
-  notes[current][e.target.dataset.key] = e.target.value;
+  notes[comp.id] = notes[comp.id] || {};
+  notes[comp.id][current] = notes[comp.id][current] || {};
+  notes[comp.id][current][e.target.dataset.key] = e.target.value;
   saveNotes();
 });
-document.getElementById("prevBtn").addEventListener("click", () => { if (current > 1) openDetail(current - 1, currentTab); });
-document.getElementById("nextBtn").addEventListener("click", () => { if (current < 8) openDetail(current + 1, currentTab); });
+$("prevBtn").addEventListener("click", () => { if (current > 1) openDetail(current - 1, currentTab); });
+$("nextBtn").addEventListener("click", () => { if (current < comp.indicators.length) openDetail(current + 1, currentTab); });
 detail.addEventListener("close", () => {
   renderCards();
-  history.replaceState(null, "", location.pathname + location.search);
+  if (comp) history.replaceState(null, "", "#" + comp.id);
 });
-
-// Close buttons and backdrop clicks
 document.querySelectorAll("dialog").forEach(d => {
   d.addEventListener("click", e => { if (e.target === d || e.target.closest("[data-close]")) d.close(); });
 });
 
-// Deep links: #indicator-3
-function fromHash() {
-  const m = location.hash.match(/^#indicator-([1-8])$/);
-  if (m) openDetail(+m[1]);
+/* ---------- Routing: #component or #component/3 ---------- */
+function route() {
+  const [cid, n] = location.hash.slice(1).split("/");
+  const c = byId(cid);
+  if (!c) {
+    comp = null;
+    if (detail.open) detail.close();
+    document.body.classList.remove("t1", "t2", "t3", "t4");
+    $("home").hidden = false; $("compView").hidden = true;
+    document.title = "Equity Framework Explorer";
+    return;
+  }
+  const changed = comp !== c;
+  comp = c;
+  $("home").hidden = true; $("compView").hidden = false;
+  if (changed) { renderComponent(); window.scrollTo(0, 0); }
+  const num = +n;
+  if (num >= 1 && num <= c.indicators.length) openDetail(num);
+  else if (detail.open) detail.close();
 }
-window.addEventListener("hashchange", fromHash);
+window.addEventListener("hashchange", route);
 
-// ---------- Summary ----------
-const summary = document.getElementById("summary");
+/* ---------- Summary across components ---------- */
+const summary = $("summary");
 function summaryText() {
-  let out = "My Culture & Environment notes\n";
-  INDICATORS.forEach(i => {
-    if (!hasNotes(i.n)) return;
-    out += `\n${i.n}. ${i.name}\n`;
-    NOTE_FIELDS.forEach(([k, label]) => {
-      const v = (notes[i.n] || {})[k];
-      if (v && v.trim()) out += `- ${label}: ${v.trim()}\n`;
+  let out = "My framework notes\n";
+  COMPONENTS.forEach(c => {
+    const withNotes = c.indicators.filter(i => hasNotes(c.id, i.n));
+    if (!withNotes.length) return;
+    out += `\n== ${c.name} ==\n`;
+    withNotes.forEach(i => {
+      out += `\n${i.n}. ${i.name}\n`;
+      NOTE_FIELDS.forEach(([k, label]) => {
+        const v = noteFor(c.id, i.n)[k];
+        if (v && v.trim()) out += `- ${label}: ${v.trim()}\n`;
+      });
     });
   });
   return out;
 }
 function renderSummary() {
-  const withNotes = INDICATORS.filter(i => hasNotes(i.n));
-  document.getElementById("summaryBody").innerHTML = withNotes.length ? withNotes.map(i =>
-    `<h3>${i.n}. ${esc(i.name)}</h3>` + NOTE_FIELDS.map(([k, label]) => {
-      const v = (notes[i.n] || {})[k];
-      return v && v.trim() ? `<p><strong>${esc(label)}:</strong> ${esc(v.trim())}</p>` : "";
-    }).join("")).join("")
-    : `<p class="empty">No notes yet. Open any indicator and use the "My notes" tab.</p>`;
+  let html = "";
+  COMPONENTS.forEach(c => {
+    const withNotes = c.indicators.filter(i => hasNotes(c.id, i.n));
+    if (!withNotes.length) return;
+    html += `<h3 class="t${c.t}" style="color:var(--accent)">${esc(c.name)}</h3>` + withNotes.map(i =>
+      `<h4>${i.n}. ${esc(i.name)}</h4>` + NOTE_FIELDS.map(([k, label]) => {
+        const v = noteFor(c.id, i.n)[k];
+        return v && v.trim() ? `<p><strong>${esc(label)}:</strong> ${esc(v.trim())}</p>` : "";
+      }).join("")).join("");
+  });
+  $("summaryBody").innerHTML = html || `<p class="empty">No notes yet. Open any indicator and use the "My notes" tab.</p>`;
 }
-document.getElementById("openSummary").addEventListener("click", () => { renderSummary(); summary.showModal(); });
-document.getElementById("printNotes").addEventListener("click", () => window.print());
-document.getElementById("copyNotes").addEventListener("click", async e => {
+document.querySelectorAll("[data-summary]").forEach(b => b.addEventListener("click", () => { renderSummary(); summary.showModal(); }));
+$("printNotes").addEventListener("click", () => window.print());
+$("copyNotes").addEventListener("click", async e => {
   const btn = e.currentTarget;
   try { await navigator.clipboard.writeText(summaryText()); btn.textContent = "Copied!"; }
   catch (err) { btn.textContent = "Copy failed"; }
   setTimeout(() => (btn.textContent = "Copy all"), 1800);
 });
-document.getElementById("clearNotes").addEventListener("click", () => {
+$("clearNotes").addEventListener("click", () => {
   if (!confirm("Clear all your notes in this browser?")) return;
-  notes = {}; saveNotes(); renderSummary(); renderCards();
+  notes = {}; saveNotes();
+  try { localStorage.removeItem("few-ce-notes-v1"); } catch (e) {}
+  renderSummary(); if (comp) renderCards();
 });
 
-// ---------- Init ----------
-renderChips();
-renderCards();
-fromHash();
+/* ---------- Init ---------- */
+renderHome();
+route();
 </script>
 </body>
 </html>
